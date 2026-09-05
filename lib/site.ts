@@ -24,12 +24,14 @@ export const site = {
     maite: "lic.maitemartelli",
   },
   /**
-   * Números de WhatsApp (formato internacional, solo dígitos).
-   * TODO: reemplazar por los números reales de Kiara y Maite.
+   * Números de WhatsApp en formato internacional para wa.me (solo dígitos).
+   * Argentina móvil = 54 + 9 + código de área + número.
+   *  - Kiara: (0297) 462-1108  ->  54 9 297 462 1108
+   *  - Maite: (011) 3465-6167  ->  54 9 11 3465 6167
    */
   whatsapp: {
-    kiara: process.env.NEXT_PUBLIC_WHATSAPP_KIARA ?? "5490000000000",
-    maite: process.env.NEXT_PUBLIC_WHATSAPP_MAITE ?? "5490000000000",
+    kiara: process.env.NEXT_PUBLIC_WHATSAPP_KIARA ?? "5492974621108",
+    maite: process.env.NEXT_PUBLIC_WHATSAPP_MAITE ?? "5491134656167",
   },
 } as const;
 

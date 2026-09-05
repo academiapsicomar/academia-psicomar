@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -lt /c/Users/Maite/Downloads/ 2>/dev/null | head -15; echo \"---paste/tmp---\"; ls -lt \"/c/Users/Maite/AppData/Local/Temp/claude/\" 2>/dev/null | head; find /c/Users/Maite/AppData/Local/Temp -maxdepth 3 -iname \"*.png\" -newermt \"-2 hours\" 2>/dev/null | head)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3100/)",
+      "Bash(find /c/Users/Maite -maxdepth 4 \\\\\\( -iname \"*.png\" -o -iname \"*.svg\" -o -iname \"*.jpg\" -o -iname \"*.webp\" \\\\\\) -newermt \"2026-09-05 12:00\" 2>/dev/null | grep -vi node_modules | grep -vi \"/.next/\" | head -30; echo \"---\"; ls -la /c/Users/Maite/AppData/Local/Temp/claude/C--Users-Maite/ 2>/dev/null)",
+      "Bash(npm run *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(pkill -f \"next-server\")",
+      "Bash(git add *)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(PORT=3100 npm run dev)",
+      "Bash(curl -s -o /dev/null -w \"dev: %{http_code}\\\\n\" http://localhost:3100/)"
+    ]
+  }
+}
