@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Section, EncabezadoSeccion } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { TeamCard } from "@/components/TeamCard";
+import { Foto } from "@/components/ui/Foto";
+import { Prosa } from "@/components/ui/Prosa";
 import { PilaresPsicoMar } from "@/components/PilaresPsicoMar";
 import { LinkButton } from "@/components/ui/Button";
 import { TerapiaPopover } from "@/components/TerapiaPopover";
 import { getEquipo } from "@/lib/content";
+import { historiaEquipo, fotoAmbas } from "@/content/equipo";
 
 export const metadata: Metadata = {
   title: "Quiénes somos",
@@ -19,21 +22,25 @@ export default async function QuienesSomosPage() {
   return (
     <>
       <Section fondo="bruma" espaciado="amplio">
-        <div className="max-w-3xl">
-          <span className="text-sm font-medium uppercase tracking-[0.14em] text-mar-600">
-            Quiénes somos
-          </span>
-          <h1 className="mt-3 text-4xl text-tinta md:text-5xl">
-            Dos psicólogas. Una misma idea: hacer de la psicología algo un poco
-            más cercano.
-          </h1>
-          <p className="mt-5 text-lg leading-relaxed text-tinta-suave">
-            Nos conocimos compartiendo formaciones, casos y muchas charlas sobre
-            clínica. De esas conversaciones nació PsicoMar: un lugar donde la
-            psicología basada en evidencia se combina con calidez, humor y
-            herramientas que se puedan usar de verdad —tanto en terapia como en
-            la práctica profesional.
-          </p>
+        <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+          <div>
+            <span className="text-sm font-medium uppercase tracking-[0.14em] text-mar-600">
+              Quiénes somos
+            </span>
+            <h1 className="mt-3 text-4xl text-tinta md:text-5xl">
+              Dos psicólogas. Una misma idea: hacer de la psicología algo un poco
+              más cercano.
+            </h1>
+            <Prosa className="mt-5 text-[17px]">{historiaEquipo}</Prosa>
+          </div>
+          <Foto
+            src={fotoAmbas.src}
+            alt={fotoAmbas.alt}
+            etiqueta="Foto de Kiara y Maite"
+            ratio="4 / 5"
+            priority
+            className="mx-auto max-w-sm"
+          />
         </div>
       </Section>
 

@@ -17,7 +17,7 @@ export function Placeholder({
     <div
       style={{ aspectRatio: ratio }}
       className={cn(
-        "grano flex items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-mar-200 via-salvia-suave to-coral-100 p-3",
+        "grano flex w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-mar-200 via-salvia-suave to-coral-100 p-3",
         className,
       )}
     >

@@ -1,8 +1,9 @@
 import { LinkButton } from "@/components/ui/Button";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Foto } from "@/components/ui/Foto";
 import { Blob } from "@/components/ui/Ondas";
 import { TerapiaPopover } from "@/components/TerapiaPopover";
 import { IconoFormacion } from "@/components/ui/iconos";
+import { fotoAmbas } from "@/content/equipo";
 
 export function Hero() {
   return (
@@ -36,9 +37,12 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <Placeholder
+          <Foto
+            src={fotoAmbas.src}
+            alt={fotoAmbas.alt}
             etiqueta="Foto de Kiara y Maite"
             ratio="4 / 5"
+            priority
             className="mx-auto max-w-sm md:ml-auto md:mr-0"
           />
         </div>

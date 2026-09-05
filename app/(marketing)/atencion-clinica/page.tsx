@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Section, EncabezadoSeccion } from "@/components/ui/Section";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Foto } from "@/components/ui/Foto";
 import { TerapiaBotones } from "@/components/TerapiaBotones";
+import { fotoAmbas } from "@/content/equipo";
 import { JsonLd } from "@/components/JsonLd";
 import { IconoCheck } from "@/components/ui/iconos";
 import { site, SITE_URL } from "@/lib/site";
@@ -102,7 +103,12 @@ export default function AtencionClinicaPage() {
               <TerapiaBotones />
             </div>
           </div>
-          <Placeholder etiqueta="Foto de Kiara y Maite" ratio="4 / 5" />
+          <Foto
+            src={fotoAmbas.src}
+            alt={fotoAmbas.alt}
+            etiqueta="Foto de Kiara y Maite"
+            ratio="4 / 5"
+          />
         </div>
       </Section>
 

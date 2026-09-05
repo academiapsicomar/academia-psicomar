@@ -37,7 +37,7 @@ export const site = {
 
 /** Mensaje precargado del CTA de terapia. */
 export const MENSAJE_TERAPIA =
-  "Hola, quiero más info sobre la terapia online 🙂";
+  "Hola, quiero más info sobre la terapia online 🌊";
 
 /** Link wa.me con mensaje precargado. */
 export function whatsappLink(numeroDigitos: string, mensaje: string): string {

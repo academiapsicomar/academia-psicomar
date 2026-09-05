@@ -1,6 +1,17 @@
 import type { MiembroEquipo } from "./types";
 import { site } from "@/lib/site";
 
+/** Cómo nació PsicoMar. Se usa en la sección "Quiénes somos". */
+export const historiaEquipo = `Nos conocimos el **primer día de la carrera** y desde ese día nos volvimos inseparables. Cursamos juntas toda la carrera y también las especializaciones que fuimos haciendo —y que seguimos haciendo hoy—.
+
+De tantos años compartiendo apuntes, primeras experiencias clínicas y charlas interminables sobre casos, nació Academia PsicoMar: un espacio donde la psicología basada en evidencia se combina con calidez, humor y herramientas que se puedan usar de verdad, tanto en terapia como en la práctica profesional.`;
+
+/** Foto de Kiara y Maite juntas. */
+export const fotoAmbas = {
+  src: "/equipo/kiara-y-maite.jpg",
+  alt: "Kiara y Maite, psicólogas y fundadoras de Academia PsicoMar, en la playa",
+};
+
 export const equipo: MiembroEquipo[] = [
   {
     slug: "kiara",
@@ -22,7 +33,7 @@ Dato extra sobre mí: soy fan de los animales y de no dejar de aprender nunca. �
       "Vínculo terapéutico y trabajo entre sesiones",
     ],
     datoExtra: "Fan de los animales y de seguir aprendiendo. 🐶 🐱 📚",
-    foto: null,
+    foto: "/equipo/kiara.jpg",
     fotoAlt: "Retrato de Kiara, psicóloga y cofundadora de Academia PsicoMar",
     whatsapp: site.whatsapp.kiara,
     orden: 1,
@@ -48,7 +59,7 @@ Dato extra sobre mí: amo la música, siempre me acompaña, ya sea en el consult
     ],
     datoExtra:
       "Amante de la música. Plan ideal: lluvia, mate y una buena playlist. 🎶 🧉 🌧",
-    foto: null,
+    foto: "/equipo/maite.jpg",
     fotoAlt:
       "Retrato de Maite Martelli, psicóloga y cofundadora de Academia PsicoMar",
     whatsapp: site.whatsapp.maite,

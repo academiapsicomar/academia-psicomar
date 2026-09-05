@@ -1,4 +1,4 @@
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Foto } from "@/components/ui/Foto";
 import { Prosa } from "@/components/ui/Prosa";
 import { IconoCheck } from "@/components/ui/iconos";
 import type { MiembroEquipo } from "@/content/types";
@@ -7,7 +7,11 @@ export function TeamCard({ miembro }: { miembro: MiembroEquipo }) {
   return (
     <article className="grid gap-6 rounded-2xl border border-mar-100 bg-white p-6 shadow-suave md:grid-cols-[minmax(0,240px)_1fr] md:p-8">
       <div className="mx-auto w-full max-w-[240px]">
-        <Placeholder etiqueta={`Foto de ${miembro.nombre}`} />
+        <Foto
+          src={miembro.foto}
+          alt={miembro.fotoAlt}
+          etiqueta={`Foto de ${miembro.nombre}`}
+        />
       </div>
       <div className="flex flex-col gap-4">
         <div>

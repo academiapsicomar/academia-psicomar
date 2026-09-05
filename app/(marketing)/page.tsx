@@ -8,7 +8,7 @@ import { ProfesionalesPreview } from "@/components/home/ProfesionalesPreview";
 import { InstagramStrip } from "@/components/InstagramStrip";
 import { Section, EncabezadoSeccion } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { Foto } from "@/components/ui/Foto";
 import { FormacionCard } from "@/components/FormacionCard";
 import { IconoFlecha } from "@/components/ui/iconos";
 import { TerapiaPopover } from "@/components/TerapiaPopover";
@@ -44,8 +44,10 @@ export default async function HomePage() {
         <div className="grid gap-10 md:grid-cols-[1fr_1.1fr] md:items-center">
           <div className="grid grid-cols-2 gap-4">
             {equipo.map((m) => (
-              <Placeholder
+              <Foto
                 key={m.slug}
+                src={m.foto}
+                alt={m.fotoAlt}
                 etiqueta={`Foto de ${m.nombre.split(" ")[0]}`}
                 ratio="3 / 4"
               />
