@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-mar-100 bg-crema/90 backdrop-blur">
       <div className="contenedor flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
-        <Logo className="shrink-0 whitespace-nowrap" />
+        <Logo className="shrink-0" alto={38} />
 
         <nav
           aria-label="Navegación principal"

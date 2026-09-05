@@ -15,7 +15,7 @@ export function Footer() {
     <footer className="mt-auto bg-mar-900 text-mar-100">
       <div className="contenedor grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="flex flex-col gap-4">
-          <Logo tono="blanco" />
+          <Logo tono="blanco" alto={40} />
           <p className="max-w-xs text-sm text-mar-200">{site.tagline}</p>
           <div className="flex gap-3">
             <a
