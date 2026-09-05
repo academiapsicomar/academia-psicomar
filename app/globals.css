@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/*
+  Academia PsicoMar — sistema de diseño
+  Tokens base. Cuando llegue el kit de marca definitivo, se ajustan acá
+  (colores exactos + tipografías) sin tocar los componentes.
+*/
+
+@theme {
+  /* --- Color principal: "mar" (teal #407E8D del brief) --- */
+  --color-mar-50: #f1f6f7;
+  --color-mar-100: #dde9eb;
+  --color-mar-200: #bed6da;
+  --color-mar-300: #92b9c0;
+  --color-mar-400: #61969f;
+  --color-mar-500: #407e8d;
+  --color-mar-600: #356777;
+  --color-mar-700: #2f5462;
+  --color-mar-800: #2b4652;
+  --color-mar-900: #1c2b30;
+
+  /* --- Fondos --- */
+  --color-bruma: #e8edf4; /* azul claro del brief */
+  --color-arena: #f4efe6; /* cálido, para alternar secciones */
+  --color-crema: #fbf9f5;
+  --color-blanco: #ffffff;
+
+  /* --- Texto --- */
+  --color-tinta: #1c2b30;
+  --color-tinta-suave: #4a5b60;
+
+  /* --- Acento cálido (a confirmar con el kit) --- */
+  --color-coral-50: #fbf0ea;
+  --color-coral-100: #f6ddd0;
+  --color-coral-300: #eab59b;
+  --color-coral-500: #db8a67;
+  --color-coral-600: #c5704c;
+
+  /* --- Apoyo --- */
+  --color-salvia: #a9c3bd;
+  --color-salvia-suave: #dbe8e4;
+
+  /* --- Tipografías (placeholders next/font) --- */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Radios --- */
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* --- Sombra suave de marca --- */
+  --shadow-suave: 0 1px 2px rgba(28, 43, 48, 0.04),
+    0 12px 32px -12px rgba(28, 43, 48, 0.12);
+  --shadow-tarjeta: 0 1px 3px rgba(28, 43, 48, 0.05),
+    0 20px 40px -24px rgba(28, 43, 48, 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-crema);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-mar-200);
+    color: var(--color-mar-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-mar-600);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Texto largo renderizado desde Markdown (blog, descripciones) */
+  .prosa {
+    color: var(--color-tinta-suave);
+    line-height: 1.7;
+  }
+  .prosa > * + * {
+    margin-top: 1.1em;
+  }
+  .prosa h2 {
+    color: var(--color-tinta);
+    font-size: 1.6rem;
+    margin-top: 2em;
+  }
+  .prosa h3 {
+    color: var(--color-tinta);
+    font-size: 1.25rem;
+    margin-top: 1.6em;
+  }
+  .prosa a {
+    color: var(--color-mar-700);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prosa strong {
+    color: var(--color-tinta);
+  }
+  .prosa ul,
+  .prosa ol {
+    padding-left: 1.3em;
+  }
+  .prosa ul {
+    list-style: disc;
+  }
+  .prosa ol {
+    list-style: decimal;
+  }
+  .prosa li + li {
+    margin-top: 0.4em;
+  }
+  .prosa blockquote {
+    border-left: 3px solid var(--color-mar-300);
+    padding-left: 1em;
+    font-style: italic;
+    color: var(--color-tinta);
+  }
+}
+
+@layer utilities {
+  /* Grano sutil para dar textura editorial */
+  .grano {
+    position: relative;
+  }
+  .grano::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .contenedor {
+    width: 100%;
+    max-width: 75rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .contenedor {
+      padding-inline: 2rem;
+    }
+  }
+}
