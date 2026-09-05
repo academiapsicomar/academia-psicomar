@@ -1,9 +1,8 @@
 import type { Formacion } from "./types";
 
 /**
- * Contenido inicial de formaciones. Datos de ejemplo listos para editar:
- * precios, fechas y detalles finos los cargan Kiara y Maite desde /admin
- * (Fase 2).
+ * Contenido de formaciones. Fechas, precios y detalles finos los editarán
+ * Kiara y Maite desde /admin (Fase 2).
  */
 export const formaciones: Formacion[] = [
   {
@@ -12,37 +11,38 @@ export const formaciones: Formacion[] = [
     tipo: "taller",
     modalidad: "online_vivo",
     resumen:
-      "Un espacio práctico para quienes están dando sus primeros pasos en la atención clínica.",
+      "Cómo empezar a atender de verdad: conseguir pacientes, honorarios, historia clínica y todo lo que la facultad no te explica.",
     descripcion: `## De qué se trata
 
-Empezar a atender genera muchas preguntas que la facultad no siempre responde: cómo armar una primera entrevista, cómo pensar objetivos, qué hacer entre sesión y sesión, cómo sostener el encuadre.
+Terminás la facultad sabiendo mucho de teoría y muy poco de lo que pasa cuando abrís el consultorio: cómo conseguir tus primeros pacientes, cuánto cobrar, qué papeles necesitás, cómo llevar una historia clínica.
 
-**Iniciar en la clínica** es un taller en vivo, práctico y sin vueltas, pensado para acompañarte en ese comienzo. Trabajamos sobre casos, dudas reales y herramientas que podés aplicar la próxima semana.
+**Iniciar en la clínica** es un encuentro en vivo de 4 horas, práctico y sin vueltas, donde te contamos cómo empezar a atender —lo clínico y lo que nadie te explica.
 
-## Contenidos
+## Qué vas a ver
 
-- La primera entrevista: qué explorar y cómo registrar.
-- Formulación de caso y objetivos terapéuticos.
-- Encuadre, honorarios y consentimiento informado.
-- Psicoeducación y tareas entre sesiones.
-- Cuándo derivar y cómo hacerlo.
-- Cuidado del rol y del propio proceso como terapeuta.
+- **Cómo conseguir pacientes.** Estrategias concretas para tus primeras derivaciones y para hacerte conocer. Le dedicamos tiempo especial: es lo que más preguntan.
+- Cómo empezar a atender: la primera entrevista y el encuadre.
+- Cómo plantear tus honorarios.
+- Historia clínica: qué registrar y cómo.
+- Consentimiento informado.
+- Seguro de mala praxis: qué es y por qué lo necesitás.
 
 ## Modalidad
 
-Encuentros en vivo por videollamada, con material complementario y espacio para consultas.`,
+Un único encuentro en vivo de 4 horas por videollamada, con material descargable y espacio para preguntas.`,
     paraQuien:
       "Psicólogos/as recién recibidos/as o en formación que están por empezar o empezaron hace poco a atender.",
-    duracion: "4 encuentros de 90 minutos",
+    duracion: "1 encuentro en vivo de 4 horas",
     enVivo: true,
-    proximaFecha: "A confirmar — dejá tu consulta y te avisamos",
-    precio: null,
+    proximaFecha: "A confirmar",
+    precio: 30000,
     incluye: [
-      "4 encuentros en vivo por videollamada",
-      "Material teórico-práctico descargable",
-      "Modelos de primera entrevista y consentimiento",
-      "Espacio de consultas durante la cursada",
-      "Certificado de participación",
+      "1 encuentro en vivo de 4 horas por videollamada",
+      "Estrategias concretas para conseguir pacientes",
+      "Modelo de historia clínica y de consentimiento informado",
+      "Guía para plantear honorarios",
+      "Info sobre seguro de mala praxis",
+      "Material descargable y certificado de participación",
     ],
     imagen: null,
     imagenAlt: "Taller Iniciar en la clínica de Academia PsicoMar",
@@ -52,7 +52,7 @@ Encuentros en vivo por videollamada, con material complementario y espacio para 
     seo: {
       title: "Iniciar en la clínica — taller para psicólogos/as",
       description:
-        "Taller en vivo y práctico para psicólogos/as que están dando sus primeros pasos en la atención clínica: primera entrevista, formulación de caso, encuadre y herramientas.",
+        "Encuentro en vivo de 4 horas para psicólogos/as que empiezan a atender: cómo conseguir pacientes, plantear honorarios, historia clínica, consentimiento informado y seguro de mala praxis.",
     },
   },
   {
@@ -78,12 +78,12 @@ Este curso ofrece una base clara de **psicofarmacología orientada a la práctic
 - Mitos frecuentes y cómo conversarlos con pacientes.`,
     paraQuien:
       "Psicólogos/as y profesionales de salud mental que quieran incorporar nociones de psicofarmacología aplicadas a la clínica.",
-    duracion: "6 encuentros de 90 minutos",
+    duracion: "A confirmar",
     enVivo: true,
-    proximaFecha: "A confirmar — dejá tu consulta y te avisamos",
+    proximaFecha: "A confirmar",
     precio: null,
     incluye: [
-      "6 encuentros en vivo por videollamada",
+      "Encuentros en vivo por videollamada",
       "Fichas resumen por grupo farmacológico",
       "Bibliografía seleccionada",
       "Grabación de los encuentros por tiempo limitado",
@@ -106,47 +106,49 @@ Este curso ofrece una base clara de **psicofarmacología orientada a la práctic
     tipo: "curso_grabado",
     modalidad: "grabado",
     resumen:
-      "El taller Iniciar en la clínica en formato grabado: lo hacés a tu ritmo, cuando quieras.",
+      "El taller Iniciar en la clínica, grabado: 4 horas para ver a tu ritmo, cuando quieras.",
     descripcion: `## De qué se trata
 
-La versión grabada de **Iniciar en la clínica**. Mismo contenido que el taller en vivo, disponible para ver cuando quieras y las veces que necesites.
+La versión grabada de **Iniciar en la clínica**: 4 horas de video para ver cuando quieras y las veces que necesites. Mismo contenido que el encuentro en vivo.
 
-Ideal si los horarios en vivo no te quedan cómodos o si querés tener el material siempre a mano para repasar.
+Ideal si querés arrancar ya, a tu ritmo, y tener el material siempre a mano.
 
 ## Cómo funciona
 
 1. Comprás el curso.
 2. Recibís acceso inmediato a tu biblioteca en la web.
-3. Ves los módulos a tu ritmo y descargás el material.
+3. Ves el video a tu ritmo y descargás el material.
 
-## Contenidos
+## Qué vas a ver
 
-- La primera entrevista: qué explorar y cómo registrar.
-- Formulación de caso y objetivos terapéuticos.
-- Encuadre, honorarios y consentimiento informado.
-- Psicoeducación y tareas entre sesiones.
-- Cuándo derivar y cómo hacerlo.`,
+- **Cómo conseguir pacientes.** Estrategias concretas para tus primeras derivaciones y para hacerte conocer.
+- Cómo empezar a atender: la primera entrevista y el encuadre.
+- Cómo plantear tus honorarios.
+- Historia clínica: qué registrar y cómo.
+- Consentimiento informado.
+- Seguro de mala praxis: qué es y por qué lo necesitás.`,
     paraQuien:
       "Profesionales que prefieren un formato a demanda, para cursar a su propio ritmo.",
-    duracion: "≈ 6 horas de video · acceso permanente",
+    duracion: "4 horas de video · acceso permanente",
     enVivo: false,
     precio: null,
     incluye: [
-      "Acceso permanente a los módulos grabados",
-      "Material teórico-práctico descargable",
-      "Modelos de primera entrevista y consentimiento",
-      "Actualizaciones del contenido sin costo",
+      "4 horas de video con acceso permanente",
+      "Estrategias concretas para conseguir pacientes",
+      "Modelo de historia clínica y de consentimiento informado",
+      "Guía para plantear honorarios",
+      "Info sobre seguro de mala praxis",
+      "Material descargable",
     ],
     imagen: null,
-    imagenAlt:
-      "Curso grabado Iniciar en la clínica de Academia PsicoMar",
+    imagenAlt: "Curso grabado Iniciar en la clínica de Academia PsicoMar",
     estado: "publicado",
     destacado: false,
     docentes: ["Kiara", "Maite Martelli"],
     seo: {
       title: "Iniciar en la clínica — curso grabado",
       description:
-        "Versión grabada y a demanda del taller Iniciar en la clínica. Acceso permanente, a tu ritmo, con material descargable.",
+        "Versión grabada del taller Iniciar en la clínica: 4 horas de video a tu ritmo sobre cómo conseguir pacientes, honorarios, historia clínica, consentimiento informado y seguro de mala praxis.",
     },
   },
 ];

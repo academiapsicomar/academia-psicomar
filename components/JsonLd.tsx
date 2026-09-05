@@ -23,6 +23,7 @@ export function OrganizationJsonLd() {
         email: site.email,
         sameAs: [
           instagramUrl(site.instagram.academia),
+          instagramUrl(site.instagram.kiara),
           instagramUrl(site.instagram.maite),
         ],
       }}

@@ -10,6 +10,7 @@ export function MobileCtaBar() {
         <TerapiaPopover
           className="flex-1 [&>button]:w-full"
           alineacion="centro"
+          haciaArriba
         />
         <Link
           href="/formaciones"

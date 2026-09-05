@@ -7,9 +7,18 @@ import { fotoAmbas } from "@/content/equipo";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-bruma">
-      <Blob className="left-[-10%] top-[-20%] h-[420px] w-[420px] opacity-60" color="var(--color-salvia)" />
-      <Blob className="right-[-8%] bottom-[-30%] h-[380px] w-[380px] opacity-50" color="var(--color-coral-100)" />
+    <section className="relative bg-bruma">
+      {/* capa decorativa: recorta los blobs sin recortar el contenido (popover) */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <Blob
+          className="left-[-10%] top-[-20%] h-[420px] w-[420px] opacity-60"
+          color="var(--color-salvia)"
+        />
+        <Blob
+          className="right-[-8%] bottom-[-30%] h-[380px] w-[380px] opacity-50"
+          color="var(--color-coral-100)"
+        />
+      </div>
       <div className="contenedor relative grid gap-12 py-16 md:grid-cols-[1.05fr_0.95fr] md:items-center md:py-24">
         <div className="flex flex-col gap-6">
           <span className="inline-flex w-fit items-center rounded-full border border-mar-200 bg-white/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-mar-700">

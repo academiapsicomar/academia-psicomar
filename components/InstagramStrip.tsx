@@ -9,14 +9,18 @@ export function InstagramStrip() {
       texto: "Novedades de talleres, supervisiones y herramientas",
     },
     {
+      handle: site.instagram.kiara,
+      texto: "Clínica y formación, por Kiara",
+    },
+    {
       handle: site.instagram.maite,
-      texto: "El día a día de la clínica y la formación, por Maite",
+      texto: "Clínica y formación, por Maite",
     },
   ];
 
   return (
     <Section fondo="arena" espaciado="compacto">
-      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-6">
         <div className="max-w-md">
           <h2 className="text-2xl text-tinta">Seguinos en Instagram</h2>
           <p className="mt-2 text-sm text-tinta-suave">
@@ -24,7 +28,7 @@ export function InstagramStrip() {
             clínica en formato corto.
           </p>
         </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {cuentas.map((c) => (
             <a
               key={c.handle}

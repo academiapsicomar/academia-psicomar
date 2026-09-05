@@ -10,6 +10,8 @@ interface Props {
   /** Alineación del panel respecto del botón. */
   alineacion?: "izquierda" | "derecha" | "centro";
   etiqueta?: string;
+  /** Si el panel debe abrirse hacia arriba (p. ej. en la barra fija de mobile). */
+  haciaArriba?: boolean;
 }
 
 /** Botón "Empezar terapia" que despliega el WhatsApp de cada psicóloga. */
@@ -17,6 +19,7 @@ export function TerapiaPopover({
   className,
   alineacion = "derecha",
   etiqueta = "Empezar terapia",
+  haciaArriba = false,
 }: Props) {
   const [abierto, setAbierto] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -62,7 +65,10 @@ export function TerapiaPopover({
         <div
           id={panelId}
           className={cn(
-            "absolute top-[calc(100%+0.5rem)] z-50 w-64 rounded-2xl border border-mar-100 bg-white p-2 shadow-tarjeta",
+            "absolute z-50 w-64 rounded-2xl border border-mar-100 bg-white p-2 shadow-tarjeta",
+            haciaArriba
+              ? "bottom-[calc(100%+0.5rem)]"
+              : "top-[calc(100%+0.5rem)]",
             alineacion === "derecha" && "right-0",
             alineacion === "izquierda" && "left-0",
             alineacion === "centro" && "left-1/2 -translate-x-1/2",

@@ -21,6 +21,7 @@ export const site = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hola@academiapsicomar.com",
   instagram: {
     academia: "academia.psicomar",
+    kiara: "lic.marrellikiara",
     maite: "lic.maitemartelli",
   },
   /**

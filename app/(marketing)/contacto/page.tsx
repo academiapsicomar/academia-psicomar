@@ -67,22 +67,21 @@ export default function ContactoPage() {
           <div className="rounded-2xl border border-mar-100 bg-white p-6 shadow-suave">
             <h2 className="text-lg text-tinta">En redes</h2>
             <div className="mt-3 flex flex-col gap-2">
-              <a
-                href={instagramUrl(site.instagram.academia)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-mar-700 hover:underline"
-              >
-                <IconoInstagram width={16} height={16} />@{site.instagram.academia}
-              </a>
-              <a
-                href={instagramUrl(site.instagram.maite)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-mar-700 hover:underline"
-              >
-                <IconoInstagram width={16} height={16} />@{site.instagram.maite}
-              </a>
+              {[
+                site.instagram.academia,
+                site.instagram.kiara,
+                site.instagram.maite,
+              ].map((handle) => (
+                <a
+                  key={handle}
+                  href={instagramUrl(handle)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-mar-700 hover:underline"
+                >
+                  <IconoInstagram width={16} height={16} />@{handle}
+                </a>
+              ))}
             </div>
           </div>
         </aside>

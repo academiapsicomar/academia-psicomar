@@ -17,23 +17,22 @@ export function Footer() {
         <div className="flex flex-col gap-4">
           <Logo tono="blanco" alto={40} />
           <p className="max-w-xs text-sm text-mar-200">{site.tagline}</p>
-          <div className="flex gap-3">
-            <a
-              href={instagramUrl(site.instagram.academia)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs text-mar-100 transition-colors hover:bg-white/10"
-            >
-              <IconoInstagram width={16} height={16} />@{site.instagram.academia}
-            </a>
-            <a
-              href={instagramUrl(site.instagram.maite)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs text-mar-100 transition-colors hover:bg-white/10"
-            >
-              <IconoInstagram width={16} height={16} />@{site.instagram.maite}
-            </a>
+          <div className="flex flex-wrap gap-2">
+            {[
+              site.instagram.academia,
+              site.instagram.kiara,
+              site.instagram.maite,
+            ].map((handle) => (
+              <a
+                key={handle}
+                href={instagramUrl(handle)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs text-mar-100 transition-colors hover:bg-white/10"
+              >
+                <IconoInstagram width={16} height={16} />@{handle}
+              </a>
+            ))}
           </div>
         </div>
 
