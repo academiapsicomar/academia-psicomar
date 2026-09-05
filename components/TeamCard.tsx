@@ -11,6 +11,7 @@ export function TeamCard({ miembro }: { miembro: MiembroEquipo }) {
           src={miembro.foto}
           alt={miembro.fotoAlt}
           etiqueta={`Foto de ${miembro.nombre}`}
+          sizes="(max-width: 768px) 60vw, 260px"
         />
       </div>
       <div className="flex flex-col gap-4">

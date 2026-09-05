@@ -107,7 +107,8 @@ export default function AtencionClinicaPage() {
             src={fotoAmbas.src}
             alt={fotoAmbas.alt}
             etiqueta="Foto de Kiara y Maite"
-            ratio="4 / 5"
+            ratio="1 / 1"
+            sizes="(max-width: 768px) 92vw, 440px"
           />
         </div>
       </Section>

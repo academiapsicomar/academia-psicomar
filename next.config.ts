@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // Permitir pedir calidades más altas que el default (75) a next/image.
+    qualities: [75, 88, 95],
+  },
 };
 
 export default nextConfig;

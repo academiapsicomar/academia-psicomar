@@ -8,7 +8,7 @@ De tantos años compartiendo apuntes, primeras experiencias clínicas y charlas 
 
 /** Foto de Kiara y Maite juntas. */
 export const fotoAmbas = {
-  src: "/equipo/kiara-y-maite.jpg",
+  src: "/equipo/kiara-y-maite.webp",
   alt: "Kiara y Maite, psicólogas y fundadoras de Academia PsicoMar, en la playa",
 };
 

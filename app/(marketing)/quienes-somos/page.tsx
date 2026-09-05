@@ -37,9 +37,10 @@ export default async function QuienesSomosPage() {
             src={fotoAmbas.src}
             alt={fotoAmbas.alt}
             etiqueta="Foto de Kiara y Maite"
-            ratio="4 / 5"
+            ratio="1 / 1"
             priority
-            className="mx-auto max-w-sm"
+            sizes="(max-width: 768px) 92vw, 440px"
+            className="mx-auto max-w-md"
           />
         </div>
       </Section>

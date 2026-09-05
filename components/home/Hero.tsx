@@ -41,9 +41,10 @@ export function Hero() {
             src={fotoAmbas.src}
             alt={fotoAmbas.alt}
             etiqueta="Foto de Kiara y Maite"
-            ratio="4 / 5"
+            ratio="1 / 1"
             priority
-            className="mx-auto max-w-sm md:ml-auto md:mr-0"
+            sizes="(max-width: 768px) 92vw, 460px"
+            className="mx-auto max-w-md md:ml-auto md:mr-0"
           />
         </div>
       </div>

@@ -13,6 +13,8 @@ export function Foto({
   ratio = "4 / 5",
   className,
   priority,
+  sizes = "(max-width: 768px) 92vw, 520px",
+  quality = 88,
 }: {
   src: string | null;
   alt: string;
@@ -21,6 +23,8 @@ export function Foto({
   ratio?: string;
   className?: string;
   priority?: boolean;
+  sizes?: string;
+  quality?: number;
 }) {
   if (!src) {
     return <Placeholder etiqueta={etiqueta} ratio={ratio} className={className} />;
@@ -39,7 +43,8 @@ export function Foto({
         alt={alt}
         fill
         priority={priority}
-        sizes="(max-width: 768px) 100vw, 480px"
+        sizes={sizes}
+        quality={quality}
         className="object-cover"
       />
     </div>
