@@ -6,9 +6,18 @@
  * acá y/o en variables de entorno.
  */
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://academiapsicomar.com";
+/**
+ * URL pública del sitio (sin barra final). Orden de preferencia:
+ *  1. NEXT_PUBLIC_SITE_URL — setear cuando haya dominio propio.
+ *  2. El dominio de producción que asigna Vercel automáticamente.
+ *  3. Fallback fijo (dev / previews).
+ */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://academia-psicomar.vercel.app")
+).replace(/\/$/, "");
 
 export const site = {
   name: "Academia PsicoMar",
