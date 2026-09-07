@@ -10,7 +10,6 @@ import {
   FormAdmin,
   Fieldset,
   AccionesFormulario,
-  BotonBorrar,
 } from "@/components/admin/ui";
 
 function fechaInput(d?: Date) {
@@ -102,11 +101,7 @@ export default async function EditarArticulo({
 
         <AccionesFormulario
           volverHref="/admin/blog"
-          onBorrar={
-            nuevo ? undefined : (
-              <BotonBorrar action={borrarArticulo.bind(null, id)} />
-            )
-          }
+        borrarAction={nuevo ? undefined : borrarArticulo.bind(null, id)}
         />
       </FormAdmin>
     </div>

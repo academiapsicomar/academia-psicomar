@@ -17,7 +17,6 @@ import {
   FormAdmin,
   Fieldset,
   AccionesFormulario,
-  BotonBorrar,
 } from "@/components/admin/ui";
 
 export default async function EditarFormacion({
@@ -166,11 +165,7 @@ export default async function EditarFormacion({
 
         <AccionesFormulario
           volverHref="/admin/formaciones"
-          onBorrar={
-            nuevo ? undefined : (
-              <BotonBorrar action={borrarFormacion.bind(null, id)} />
-            )
-          }
+        borrarAction={nuevo ? undefined : borrarFormacion.bind(null, id)}
         />
       </FormAdmin>
     </div>

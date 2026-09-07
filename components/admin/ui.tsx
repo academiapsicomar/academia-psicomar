@@ -83,10 +83,12 @@ export function BadgeEstado({ estado }: { estado: "borrador" | "publicado" }) {
 
 export function AccionesFormulario({
   volverHref,
-  onBorrar,
+  borrarAction,
 }: {
   volverHref: string;
-  onBorrar?: ReactNode;
+  /** Acción de borrado (ya bindeada con el id). Se dispara con formAction,
+   * sin form anidado. */
+  borrarAction?: () => void | Promise<void>;
 }) {
   return (
     <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-mar-100 pt-6">
@@ -102,7 +104,15 @@ export function AccionesFormulario({
       >
         Cancelar
       </Link>
-      {onBorrar && <div className="ml-auto">{onBorrar}</div>}
+      {borrarAction && (
+        <button
+          type="submit"
+          formAction={borrarAction}
+          className="ml-auto rounded-full px-4 py-2 text-sm text-coral-600 hover:bg-coral-50"
+        >
+          Eliminar
+        </button>
+      )}
     </div>
   );
 }
@@ -138,21 +148,3 @@ export function Fieldset({
   );
 }
 
-export function BotonBorrar({
-  action,
-  label = "Eliminar",
-}: {
-  action: () => void | Promise<void>;
-  label?: string;
-}) {
-  return (
-    <form action={action}>
-      <button
-        type="submit"
-        className="rounded-full px-4 py-2 text-sm text-coral-600 hover:bg-coral-50"
-      >
-        {label}
-      </button>
-    </form>
-  );
-}
