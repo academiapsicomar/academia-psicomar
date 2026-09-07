@@ -1,5 +1,5 @@
 import type { MiembroEquipo } from "./types";
-import { site } from "@/lib/site";
+import { site } from "../lib/site";
 
 /** Cómo nació PsicoMar. Se usa en la sección "Quiénes somos". */
 export const historiaEquipo = `Nos conocimos el **primer día de la carrera** y desde ese día nos volvimos inseparables. Cursamos juntas toda la carrera y también las especializaciones que fuimos haciendo —y que seguimos haciendo hoy—.

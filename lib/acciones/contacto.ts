@@ -1,5 +1,9 @@
 "use server";
 
+import { z } from "zod";
+import { db } from "@/lib/db";
+import { consultas } from "@/db/schema";
+import { enviarMail, layoutMail } from "@/lib/email";
 import { site } from "@/lib/site";
 
 export interface EstadoContacto {
@@ -8,40 +12,60 @@ export interface EstadoContacto {
   errores?: Partial<Record<"nombre" | "email" | "motivo" | "mensaje", string>>;
 }
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MOTIVOS = ["formacion", "supervision", "herramientas", "otro"] as const;
+const schema = z.object({
+  nombre: z.string().trim().min(2, "Contanos tu nombre."),
+  email: z.string().trim().toLowerCase().email("Ingresá un email válido."),
+  motivo: z.enum(["formacion", "supervision", "herramientas", "otro"], {
+    message: "Elegí un motivo.",
+  }),
+  mensaje: z.string().trim().min(10, "Escribí un mensaje un poco más largo."),
+});
 
-/**
- * Recibe una consulta del formulario de /contacto.
- *
- * Fase 2: guardar en la tabla `leads` (Drizzle) y enviar un aviso por email
- * (Resend) a {site.email}. Por ahora valida y registra en el log del servidor.
- */
+const ETIQUETA_MOTIVO: Record<string, string> = {
+  formacion: "Talleres y cursos",
+  supervision: "Supervisiones grupales",
+  herramientas: "Packs de herramientas",
+  otro: "Otra consulta",
+};
+
 export async function enviarConsulta(
   _prev: EstadoContacto,
   formData: FormData,
 ): Promise<EstadoContacto> {
-  const nombre = String(formData.get("nombre") ?? "").trim();
-  const email = String(formData.get("email") ?? "").trim();
-  const motivo = String(formData.get("motivo") ?? "").trim();
-  const mensaje = String(formData.get("mensaje") ?? "").trim();
+  const parsed = schema.safeParse({
+    nombre: formData.get("nombre"),
+    email: formData.get("email"),
+    motivo: formData.get("motivo"),
+    mensaje: formData.get("mensaje"),
+  });
 
-  const errores: EstadoContacto["errores"] = {};
-  if (nombre.length < 2) errores.nombre = "Contanos tu nombre.";
-  if (!EMAIL_RE.test(email)) errores.email = "Ingresá un email válido.";
-  if (!MOTIVOS.includes(motivo as (typeof MOTIVOS)[number]))
-    errores.motivo = "Elegí un motivo.";
-  if (mensaje.length < 10)
-    errores.mensaje = "Escribí un mensaje un poco más largo.";
-
-  if (Object.keys(errores).length > 0) {
+  if (!parsed.success) {
+    const errores: EstadoContacto["errores"] = {};
+    for (const issue of parsed.error.issues) {
+      const campo = issue.path[0] as keyof NonNullable<EstadoContacto["errores"]>;
+      if (campo && !errores[campo]) errores[campo] = issue.message;
+    }
     return { ok: false, errores };
   }
 
-  const consulta = { nombre, email, motivo, mensaje, fecha: new Date().toISOString() };
+  const { nombre, email, motivo, mensaje } = parsed.data;
 
-  // TODO(Fase 2): db.insert(leads).values(consulta) + resend.emails.send(...)
-  console.info(`[contacto] nueva consulta para ${site.email}:`, consulta);
+  await db.insert(consultas).values({ nombre, email, tipo: motivo, mensaje });
+
+  const destino = process.env.EMAIL_CONSULTAS || site.email;
+  await enviarMail({
+    to: destino,
+    replyTo: email,
+    subject: `Nueva consulta (${ETIQUETA_MOTIVO[motivo]}) — ${nombre}`,
+    html: layoutMail(
+      "Nueva consulta desde la web",
+      `<p><strong>Nombre:</strong> ${nombre}</p>
+       <p><strong>Email:</strong> ${email}</p>
+       <p><strong>Motivo:</strong> ${ETIQUETA_MOTIVO[motivo]}</p>
+       <p><strong>Mensaje:</strong></p>
+       <p style="white-space:pre-wrap">${mensaje.replace(/</g, "&lt;")}</p>`,
+    ),
+  });
 
   return {
     ok: true,

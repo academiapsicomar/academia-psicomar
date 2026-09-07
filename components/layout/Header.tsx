@@ -14,9 +14,12 @@ export function Header() {
   const pathname = usePathname();
   const [abierto, setAbierto] = useState(false);
 
-  useEffect(() => {
-    setAbierto(false);
-  }, [pathname]);
+  // Cerrar el menú al cambiar de ruta (sin efecto: comparamos en render).
+  const [rutaPrevia, setRutaPrevia] = useState(pathname);
+  if (pathname !== rutaPrevia) {
+    setRutaPrevia(pathname);
+    if (abierto) setAbierto(false);
+  }
 
   useEffect(() => {
     document.body.style.overflow = abierto ? "hidden" : "";
