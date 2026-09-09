@@ -8,13 +8,6 @@ const TIPOS = ["image/jpeg", "image/png", "image/webp", "image/avif"];
 export async function POST(req: NextRequest) {
   await requerirAdmin();
 
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    return NextResponse.json(
-      { error: "Falta configurar el almacenamiento de imágenes (Vercel Blob)." },
-      { status: 500 },
-    );
-  }
-
   const form = await req.formData();
   const file = form.get("file");
   if (!(file instanceof File)) {
@@ -38,10 +31,22 @@ export async function POST(req: NextRequest) {
     .toString(36)
     .slice(2, 8)}.${ext}`;
 
-  const blob = await put(nombre, file, {
-    access: "public",
-    addRandomSuffix: false,
-  });
-
-  return NextResponse.json({ url: blob.url });
+  try {
+    // En Vercel se autentica solo (OIDC + store conectado). En local necesita
+    // BLOB_READ_WRITE_TOKEN en .env.local.
+    const blob = await put(nombre, file, {
+      access: "public",
+      addRandomSuffix: false,
+    });
+    return NextResponse.json({ url: blob.url });
+  } catch (e) {
+    console.error("[upload] error de Vercel Blob:", e);
+    return NextResponse.json(
+      {
+        error:
+          "No se pudo subir la imagen. Revisá que el Blob store esté conectado al proyecto.",
+      },
+      { status: 500 },
+    );
+  }
 }
